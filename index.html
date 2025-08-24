@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart To‑Do App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Smart To‑Do</h1>
+
+    <div class="container">
+      <!-- Left: Create & Active list -->
+      <section class="panel">
+        <div class="add-grid">
+          <input
+            id="taskInput"
+            type="text"
+            placeholder="Task name (e.g., Call client)"
+          />
+          <input id="dueDate" type="date" />
+          <select id="priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+          <input
+            id="category"
+            type="text"
+            placeholder="Category (e.g., Work)"
+          />
+          <button id="addTaskBtn">Add</button>
+        </div>
+
+        <div class="filters">
+          <button class="chip active" data-filter="all">
+            All (<span id="allCount">0</span>)
+          </button>
+          <button class="chip" data-filter="active">
+            Active (<span id="activeCount">0</span>)
+          </button>
+          <button class="chip" data-filter="completed">
+            Completed (<span id="completedCount">0</span>)
+          </button>
+
+          <div class="search-row" style="margin-left: auto">
+            <input
+              id="search"
+              type="text"
+              placeholder="Search tasks…"
+              style="min-width: 180px"
+            />
+            <select id="catFilter">
+              <option value="">All categories</option>
+            </select>
+            <select id="sortBy" title="Sort">
+              <option value="created_desc">Newest</option>
+              <option value="created_asc">Oldest</option>
+              <option value="due_asc">Due date ↑</option>
+              <option value="due_desc">Due date ↓</option>
+              <option value="priority_desc">Priority High→Low</option>
+              <option value="priority_asc">Priority Low→High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="muted" id="progressText">0 of 0 completed (0%)</div>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <ul id="taskList"></ul>
+        <div id="emptyActive" class="empty" style="display: none">
+          No tasks found.
+        </div>
+      </section>
+
+      <!-- Right: Completed list -->
+      <section class="panel">
+        <div class="right-head">
+          <h2 style="margin: 0; font-size: 1.2rem">Completed</h2>
+          <button id="clearCompletedBtn" class="btn-small btn-grey">
+            Clear All
+          </button>
+        </div>
+        <ul id="completedList"></ul>
+        <div id="emptyCompleted" class="empty" style="display: none">
+          No completed tasks yet.
+        </div>
+      </section>
+    </div>
+
+    <div id="snack" class="snack"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
